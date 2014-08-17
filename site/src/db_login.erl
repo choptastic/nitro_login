@@ -1,6 +1,7 @@
 -module(db_login).
 -export([
-	create_account/2
+	create_account/2,
+	attempt_login/2
 ]).
 
 open_db() ->     
@@ -16,3 +17,13 @@ create_account(Username, Password) ->
 	dets:insert(logins, {Username, PWHash}),
 	close_db(),
 	ok.
+
+attempt_login(Username, Password) ->
+	open_db(),
+	Result = case dets:lookup(logins, Username) of
+		[] -> false;
+		[{_, PWHash}] ->
+			erlpass:match(Password, PWHash)
+	end,
+	close_db(),
+	Result.
