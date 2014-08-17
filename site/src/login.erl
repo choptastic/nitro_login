@@ -7,13 +7,17 @@ main() -> #template{file="site/templates/bare.html"}.
 title() -> "Log In".
 
 body() -> 
+    wf:defer(login, username, #validate{validators=[
+		#is_required{text="Username Required"}]}),
+    wf:defer(login, password, #validate{validators=[
+		#is_required{text="Password Required"}]}),
 	[
 	 	#label{text="Username"},
 		#textbox{id=username},
 		#label{text="Password"},
 		#password{id=password},
 		#br{}, 
-	 	#button{text="Log In", postback=login}
+	 	#button{id=login, text="Log In", postback=login}
   	].
 
 event(login) ->
