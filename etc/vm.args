@@ -25,5 +25,6 @@
 ## Run code at startup.
 -eval "application:start(nitrogen)"
 
+-eval "application:start(bcrypt)"
 
 -setcookie KHCgKPz2SoLkAk59fErRH2js0ZFaxDNm9Lx1x1PoQx3IexAiYlKazwHFoulQP
