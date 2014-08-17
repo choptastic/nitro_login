@@ -7,6 +7,13 @@ main() -> #template{file="site/templates/bare.html"}.
 title() -> "Create an account!".
 
 body() ->
+	wf:defer(save, username, #validate{validators=[
+		#is_required{text="Username Required"}]}),
+	wf:defer(save, password, #validate{validators=[
+		#is_required{text="Password Required"}]}),
+	wf:defer(save, password2, #validate{validators=[
+		#confirm_same{text="Passwords do not match",
+					  confirm_id=password}]}),
 	[
 		#label{text="Username"},
 		#textbox{id=username},
@@ -15,7 +22,7 @@ body() ->
 		#label{text="Confirm Password"},
 		#password{id=password2},
 		#br{},
-		#button{text="Save Account", postback=save}
+		#button{id=save, text="Save Account", postback=save}
    ].
 
 event(save) ->
