@@ -6,9 +6,15 @@ main() -> #template{file="site/templates/bare.html"}.
 
 title() -> "Create an account!".
 
+is_username_available(_Tag, Username) ->
+	not(db_login:username_exists(Username)).
+
 body() ->
 	wf:defer(save, username, #validate{validators=[
-		#is_required{text="Username Required"}]}),
+		#is_required{text="Username Required"},
+		#custom{text="Username taken",
+				function=fun is_username_available/2,
+				tag=available}]}),
 	wf:defer(save, password, #validate{validators=[
 		#is_required{text="Password Required"}]}),
 	wf:defer(save, password2, #validate{validators=[

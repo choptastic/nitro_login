@@ -1,7 +1,8 @@
 -module(db_login).
 -export([
 	create_account/2,
-	attempt_login/2
+	attempt_login/2,
+	username_exists/1
 ]).
 
 open_db() ->     
@@ -27,3 +28,13 @@ attempt_login(Username, Password) ->
 	end,
 	close_db(),
 	Result.
+
+username_exists(Username) ->
+	open_db(),
+	Exists = case dets:lookup(logins, Username) of
+		[] -> false;
+		_ -> true
+	end,
+	close_db(),
+	Exists.
+
