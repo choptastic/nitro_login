@@ -8,7 +8,7 @@ To try this app out, you must already have Erlang installed (preferably Erlang 1
 ```bash
 git clone git://github.com/choptastic/nitro_login
 cd nitro_login
-make fix-slim-release # only if you a version of Erlang other than 17 installed
+make fix-slim-release # only if you have a version of Erlang other than 17 installed
 make
 bin/nitrogen console
 ```
