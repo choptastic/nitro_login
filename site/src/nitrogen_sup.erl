@@ -1,4 +1,5 @@
 %% -*- mode: nitrogen -*-
+%% vim: ts=4 sw=4 et
 -module(nitrogen_sup).
 -behaviour(supervisor).
 -export([
@@ -21,6 +22,8 @@ start_link() ->
 %% ===================================================================
 
 init([]) ->
+    application:start(crypto),
     application:start(nprocreg),
-    {ok, { {one_for_one, 5, 10}, []} }.
+    application:start(simple_bridge),
 
+    {ok, { {one_for_one, 5, 10}, []} }.
