@@ -112,6 +112,29 @@ div.inplace_textbox .LV_invalid {
     border: solid 2px #D0D0C0;
 }
 
+/*** Disconnection Bar ***/
+div.nitrogen_disconnected_bar {
+	display:none;
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	padding:5px 0 5px 0;
+	text-align:center;
+	height:20px;
+	background: #fcc;
+	color: #F00;
+	font-weight:bold;
+	z-index: 10000;
+	border-bottom: 1px solid #f00;
+}
+
+div.nitrogen_reconnected_bar {
+	color:#090;
+	background:#cfc;
+	border-bottom: 1px solid #090;
+}
+
 /*** Lightbox ***/
 
 .lightbox, .lightbox_table, .lightbox_background {
@@ -194,7 +217,41 @@ div.inplace_textbox .LV_invalid {
     /*background: limegreen;*/
 }
 
-/* Recaptcha */
+.upload_overall_progress {
+	height:20px;
+}
+
+.upload_droplist li div.upload_progress {
+	height: 10px;
+	width:50px;
+	margin-left: 10px;
+	display: inline-block;
+}
+
+a.upload_delete_file:visited,
+a.upload_delete_file:link,
+a.upload_delete_file:active {
+	background: #f00;
+	color: #fff;
+	border: 1px solid #f00;
+	border-radius:15px;
+	display:inline-block;
+	padding:1px;
+	line-height:8px;
+	text-align:center;
+	font-size:14px;
+	margin-left:5px;
+	font-weight:bold;
+}
+
+a.upload_delete_file:hover {
+	background: #fff;
+	border: 1px solid #f00;
+	color: #000;
+	text-decoration: none;
+}
+
+/* RECAPTCHA */
 
 .recaptcha * {
 	line-height:1em;
@@ -202,6 +259,18 @@ div.inplace_textbox .LV_invalid {
 
 .recaptcha {
 	width:315px !important;
+}
+
+.ui-progressbar {
+	position:relative;
+}		
+
+.progressbar-label {
+	text-align:center;
+	position:absolute;
+	left:0;
+	top:0;
+	width:100%;
 }
 
 /*** jQuery Tabs ***/
